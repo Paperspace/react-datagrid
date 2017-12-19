@@ -79,7 +79,7 @@
     "object-assign": "^4.0.1",
     "prop-types": "^15.6.0",
     "react-class": "^3.2.2",
-    "react-load-mask": "^3.0.2",
+    "react-load-mask": "git://github.com/jappwilson/react-load-mask",
     "react-menus": "^2.0.5",
     "react-simple-toolbar": "git://github.com/Paperspace/react-simple-toolbar",
     "react-style-normalizer": "^1.2.8",

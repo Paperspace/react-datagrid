@@ -4884,10 +4884,6 @@ react-class@^3.2.2:
   dependencies:
     object-assign "^4.1.0"
 
-react-clean-props@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-clean-props/-/react-clean-props-1.0.0.tgz#37bf6e7f4964d6fa1f562a8bc75015809a8e3c06"
-
 react-clonewithprops@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-clonewithprops/-/react-clonewithprops-1.0.1.tgz#a1758008410910dd014b32a982028cc6874439c8"
@@ -4928,12 +4924,11 @@ react-load-mask@^1.0.1:
     object-assign "^2.0.0"
     react-style-normalizer "^1.1.3"
 
-react-load-mask@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/react-load-mask/-/react-load-mask-3.0.2.tgz#cbb2f49439ced16f51b5bed1f17885cd56b279e4"
+"react-load-mask@git://github.com/jappwilson/react-load-mask":
+  version "2.0.3"
+  resolved "git://github.com/jappwilson/react-load-mask#1d82432a4daa48f930eb4255319fdf788434ace6"
   dependencies:
     object-assign "^4.1.0"
-    react-clean-props "^1.0.0"
 
 react-menus@^2.0.5:
   version "2.0.8"
