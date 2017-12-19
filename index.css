@@ -780,14 +780,13 @@ html.u-app body * {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
   -ms-flex-flow: column;
   -o-flex-flow: column;
   flex-flow: column;
   flex-flow: column;
+  -webkit-box-orient: vertical;
   box-orient: vertical;
   -webkit-box-flex: 1 1 auto;
   -ms-box-flex: 1 1 auto;
@@ -803,23 +802,21 @@ html.u-app body * {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -ms-flex-align: stretch;
+      align-items: stretch;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-  -webkit-box-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: flex-start;
   flex-pack: start;
   -ms-flex-pack: start;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  justify-content: flex-start;
+  -ms-flex-direction: row;
+      flex-direction: row;
   -ms-flex-flow: row;
   -o-flex-flow: row;
   flex-flow: row;
   flex-flow: row;
-  box-orient: horizontal;
+  -webkit-box-orient: horizontal;
   position: relative;
   overflow: hidden;
   z-index: 10;
@@ -844,7 +841,7 @@ html.u-app body * {
   visibility: hidden;
 }
 .z-horizontal-scroller {
-  height: 1px;
+  height: 0.1px;
   visibility: hidden;
 }
 .z-vertical-scrollbar {
@@ -873,24 +870,22 @@ html.u-app body * {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+      flex-direction: row;
   -ms-flex-flow: row;
   -o-flex-flow: row;
   flex-flow: row;
   flex-flow: row;
-  box-orient: horizontal;
+  -webkit-box-orient: horizontal;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -ms-flex-align: stretch;
+      align-items: stretch;
   -ms-flex-line-pack: start;
       align-content: flex-start;
   -webkit-box-pack: stretch;
-          justify-content: stretch;
   flex-pack: justify;
   -ms-flex-pack: justify;
+  justify-content: stretch;
 }
 .z-horizontal-scrollbar-fix {
   -webkit-box-flex: 1;
@@ -927,18 +922,17 @@ html.u-app body * {
   display: block;
 }
 .react-datagrid {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
   -ms-flex-flow: column;
   -o-flex-flow: column;
   flex-flow: column;
   flex-flow: column;
+  -webkit-box-orient: vertical;
   box-orient: vertical;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -ms-flex-align: stretch;
+      align-items: stretch;
 }
 .react-datagrid .z-row,
 .react-datagrid .react-datagrid-pagination-toolbar {
@@ -964,28 +958,26 @@ html.u-app body * {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
   -ms-flex-flow: column;
   -o-flex-flow: column;
   flex-flow: column;
   flex-flow: column;
+  -webkit-box-orient: vertical;
   box-orient: vertical;
 }
 .react-datagrid > .z-inner .z-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
   -ms-flex-flow: column;
   -o-flex-flow: column;
   flex-flow: column;
   flex-flow: column;
+  -webkit-box-orient: vertical;
   box-orient: vertical;
   -webkit-box-flex: 1 1 auto;
   -ms-box-flex: 1 1 auto;
@@ -1011,15 +1003,13 @@ html.u-app body * {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+      flex-direction: row;
   -ms-flex-flow: row;
   -o-flex-flow: row;
   flex-flow: row;
   flex-flow: row;
-  box-orient: horizontal;
+  -webkit-box-orient: horizontal;
   z-index: 1;
 }
 .react-datagrid .z-mask-wrapper {
@@ -1037,32 +1027,31 @@ html.u-app body * {
   display: flex;
 }
 .react-datagrid.z-empty .z-table-wrapper {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
   -ms-flex-flow: column;
   -o-flex-flow: column;
   flex-flow: column;
   flex-flow: column;
+  -webkit-box-orient: vertical;
   box-orient: vertical;
   -webkit-box-pack: center;
-          justify-content: center;
   flex-pack: center;
   -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 .react-datagrid.z-empty .z-empty-text {
   width: 100%;
   -webkit-box-pack: center;
-          justify-content: center;
   flex-pack: center;
   -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1086,9 +1075,9 @@ html.u-app body * {
   background: #f4f5f8;
 }
 .react-datagrid .z-header {
-  -webkit-box-align: stretch /* for vertical aligning text in header */;
-      -ms-flex-align: stretch /* for vertical aligning text in header */;
-          align-items: stretch /* for vertical aligning text in header */;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+      align-items: stretch;
 }
 .react-datagrid .z-column-legend {
   height: 2px;
@@ -1138,7 +1127,6 @@ html.u-app body * {
   border-bottom: 1px solid #a8a8a8;
 }
 .react-datagrid .z-header-wrapper.z-dragging .z-column-header:not(.z-drag) {
-  -webkit-transition: left 0.4s;
   transition: left 0.4s;
 }
 .react-datagrid .z-column-header {
@@ -1150,19 +1138,17 @@ html.u-app body * {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+      flex-direction: row;
   -ms-flex-flow: row;
   -o-flex-flow: row;
   flex-flow: row;
   flex-flow: row;
-  box-orient: horizontal;
+  -webkit-box-orient: horizontal;
   height: 100%;
 }
 .react-datagrid .z-column-header .z-content {
@@ -1238,8 +1224,8 @@ html.u-app body * {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
   cursor: default;
 }
 .react-datagrid .z-row .z-cell .z-content {
@@ -1273,9 +1259,9 @@ html.u-app body * {
 }
 .react-datagrid .z-summary {
   border-top: 1px solid #a8a8a8;
-  -webkit-box-align: stretch /* for vertical aligning text in header */;
-      -ms-flex-align: stretch /* for vertical aligning text in header */;
-          align-items: stretch /* for vertical aligning text in header */;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+      align-items: stretch;
 }
 .react-datagrid .z-summary .z-cell {
   position: relative;
@@ -1286,19 +1272,17 @@ html.u-app body * {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+      flex-direction: row;
   -ms-flex-flow: row;
   -o-flex-flow: row;
   flex-flow: row;
   flex-flow: row;
-  box-orient: horizontal;
+  -webkit-box-orient: horizontal;
   height: 100%;
 }
 .react-datagrid .z-summary .z-cell .z-content {
