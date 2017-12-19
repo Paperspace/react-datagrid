@@ -18,20 +18,15 @@
   top: 0;
   left: 0; }
   .react-load-mask--visible {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-flow: column;
-        flex-flow: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center; }
+    display: block; }
 
 .react-load-mask__loader {
-  position: relative; }
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
 
 .react-load-mask__loader-loadbar {
   -webkit-animation: loader-fade 1s linear infinite;
