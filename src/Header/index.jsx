@@ -54,15 +54,15 @@ function getDropState(){
     }
 }
 
-module.exports = React.createClass({
+class Header extends React.Component {
 
-    displayName: 'ReactDataGrid.Header',
+    displayName: 'ReactDataGrid.Header'
 
     propTypes: {
         columns: React.PropTypes.array
-    },
+    }
 
-    onDrop: function(event){
+    onDrop (event){
         var state = this.state
         var props = this.props
 
@@ -90,9 +90,9 @@ module.exports = React.createClass({
         }
 
         this.setState(getDropState())
-    },
+    }
 
-    getDefaultProps: function(){
+    getDefaultProps (){
         return {
             defaultClassName : 'z-header-wrapper',
             draggingClassName: 'z-dragging',
@@ -101,9 +101,9 @@ module.exports = React.createClass({
             sortInfo        : null,
             scrollTop       : 0
         }
-    },
+    }
 
-    getInitialState: function(){
+    getInitialState (){
 
         return {
             mouseOver : true,
@@ -113,9 +113,9 @@ module.exports = React.createClass({
             dragColumn: null,
             shiftIndexes: null
         }
-    },
+    }
 
-    render: function() {
+    render () {
         var props = this.prepareProps(this.props)
         var state = this.state
 
@@ -159,13 +159,13 @@ module.exports = React.createClass({
                 </div>
             </div>
         )
-    },
+    }
     
-    scrollLeft: function(scrollLeft) {
+    scrollLeft (scrollLeft) {
       this.refs.zHeader.style.transform = `translate3d(${-scrollLeft}px,0,0)`;
-    },
+    }
 
-    renderCell: function(props, state, column, index){
+    renderCell (props, state, column, index){
 
         var resizing  = props.resizing
         var text      = column.title
@@ -265,9 +265,9 @@ module.exports = React.createClass({
                 {resizer}
             </Cell>
         )
-    },
+    }
 
-    toggleSort: function(column){
+    toggleSort (column){
         var sortInfo       = asArray(clone(this.props.sortInfo))
         var columnSortInfo = getColumnSortInfo(column, sortInfo)
 
@@ -297,9 +297,9 @@ module.exports = React.createClass({
             ;(this.props.onSortChange || emptyFn)(sortInfo)
         }
 
-    },
+    }
 
-    renderColumnMenu: function(props, state, column, index){
+    renderColumnMenu (props, state, column, index){
         if (!props.withColumnMenu || (!column.rightNode)) {
             return
         }
@@ -309,9 +309,9 @@ module.exports = React.createClass({
             <div className="z-show-right-node">{column.rightNode}</div>
           }
         </div>
-    },
+    }
 
-    showMenu: function(column, event){
+    showMenu (column, event){
 
         var menuItem = function(column){
             var visibility = this.props.columnVisibility
@@ -359,9 +359,9 @@ module.exports = React.createClass({
         this.props.showMenu(menu.bind(this, event.currentTarget), {
             menuColumn: column.name
         })
-    },
+    }
 
-    showFilterMenu: function(column, event){
+    showFilterMenu (column, event){
 
         function menu(eventTarget, props){
 
@@ -391,17 +391,17 @@ module.exports = React.createClass({
         this.props.showMenu(menu.bind(this, event.currentTarget), {
             menuColumn: column.name
         })
-    },
+    }
 
-    toggleColumn: function(column){
+    toggleColumn (column){
         this.props.toggleColumn(column)
-    },
+    }
 
-    hideMenu: function(){
+    hideMenu (){
         this.props.showColumnMenu(null, null)
-    },
+    }
 
-    handleResizeMouseDown: function(column, event){
+    handleResizeMouseDown (column, event){
         setupColumnResize(this, this.props, column, event)
 
         //in order to prevent setupColumnDrag in handleMouseDown
@@ -411,16 +411,16 @@ module.exports = React.createClass({
         if (event.nativeEvent){
             event.nativeEvent.resizing = true
         }
-    },
+    }
 
-    handleFilterMouseUp: function(column, event){
+    handleFilterMouseUp (column, event){
         event.nativeEvent.stopSort = true
 
         this.showFilterMenu(column, event)
         // event.stopPropagation()
-    },
+    }
 
-    handleMouseUp: function(column, event){
+    handleMouseUp (column, event){
       
         if (this.state.dragging){
             return
@@ -437,21 +437,21 @@ module.exports = React.createClass({
         if (column.sortable){
             this.toggleSort(column)
         }
-    },
+    }
 
-    handleMouseOut: function(column){
+    handleMouseOut (column){
         this.setState({
             mouseOver: false
         })
-    },
+    }
 
-    handleMouseOver: function(column){
+    handleMouseOver (column){
         this.setState({
             mouseOver: column.name
         })
-    },
+    }
 
-    handleMouseDown: function(column, event){
+    handleMouseDown (column, event){
         if (event && event.nativeEvent && event.nativeEvent.resizing){
             return
         }
@@ -465,28 +465,28 @@ module.exports = React.createClass({
         }
 
         setupColumnDrag(this, this.props, column, event)
-    },
+    }
 
-    onResizeDragStart: function(config){
+    onResizeDragStart (config){
         this.setState({
             resizing: true
         })
         this.props.onColumnResizeDragStart(config)
-    },
+    }
 
-    onResizeDrag: function(config){
+    onResizeDrag (config){
         this.props.onColumnResizeDrag(config)
-    },
+    }
 
-    onResizeDrop: function(config, resizeInfo, event){
+    onResizeDrop (config, resizeInfo, event){
         this.setState({
             resizing: false
         })
 
         this.props.onColumnResizeDrop(config, resizeInfo)
-    },
+    }
 
-    prepareProps: function(thisProps){
+    prepareProps (thisProps){
         var props = {}
 
         assign(props, thisProps)
@@ -503,20 +503,22 @@ module.exports = React.createClass({
         props.columnMap = columnMap
 
         return props
-    },
+    }
 
-    prepareClassName: function(props){
+    prepareClassName (props){
         props.className = props.className || ''
         props.className += ' ' + props.defaultClassName
 
         if (this.state.dragging){
             props.className += ' ' + props.draggingClassName
         }
-    },
+    }
 
-    prepareStyle: function(props){
+    prepareStyle (props){
         var style = props.style = {}
 
         assign(style, props.defaultStyle)
     }
-})
+}
+
+export default Header

@@ -5,9 +5,9 @@ var assign   = require('object-assign')
 
 function emptyFn(){}
 
-module.exports = React.createClass({
+class Wrapper extends React.Component {
 
-    displayName: 'ReactDataGrid.Wrapper',
+    displayName: 'ReactDataGrid.Wrapper'
 
     propTypes: {
         scrollLeft   : React.PropTypes.number,
@@ -15,26 +15,26 @@ module.exports = React.createClass({
         scrollbarSize: React.PropTypes.number,
         rowHeight   : React.PropTypes.any,
         renderCount : React.PropTypes.number
-    },
+    }
 
-    getDefaultProps: function(){
+    getDefaultProps (){
         return {
             scrollLeft: 0,
             scrollTop : 0
         }
-    },
+    }
 
-    onMount: function(scroller){
+    onMount (scroller){
         ;(this.props.onMount || emptyFn)(this, scroller)
-    },
+    }
     
-    toTheTop: function() {
+    toTheTop () {
       if(this.refs.scroller) {
         this.refs.scroller.toTheTop();
       }
-    },
+    }
 
-    render: function() {
+    render () {
 
         var props     = this.prepareProps(this.props)
         var rowsCount = props.renderCount
@@ -55,27 +55,29 @@ module.exports = React.createClass({
 
 
         return content
-    },
+    }
 
-    onVerticalScrollOverflow: function() {
-    },
+    onVerticalScrollOverflow () {
+    }
 
-    onHorizontalScrollOverflow: function() {
-    },
+    onHorizontalScrollOverflow () {
+    }
 
-    onHorizontalScroll: function(scrollLeft) {
+    onHorizontalScroll (scrollLeft) {
         this.props.onScrollLeft(scrollLeft)
-    },
+    }
 
-    onVerticalScroll: function(pos){
+    onVerticalScroll (pos){
         this.props.onScrollTop(pos)
-    },
+    }
 
-    prepareProps: function(thisProps){
+    prepareProps (thisProps){
         var props = {}
 
         assign(props, thisProps)
 
         return props
     }
-})
+}
+
+export default Wrapper

@@ -3,21 +3,21 @@
 var React  = require('react')
 var assign = require('object-assign')
 
-module.exports = React.createClass({
+class ResizeProxy extends React.Component {
 
-    displayName: 'ReactDataGrid.ResizeProxy',
+    displayName: 'ReactDataGrid.ResizeProxy'
 
     propTypes: {
         active: React.PropTypes.bool
-    },
+    }
 
-    getInitialState: function(){
+    getInitialState (){
         return {
             offset: 0
         }
-    },
+    }
 
-    render: function(){
+    render (){
 
         var props = assign({}, this.props)
         var state = this.state
@@ -32,4 +32,6 @@ module.exports = React.createClass({
 
         return <div className='z-resize-proxy' style={style} />
     }
-})
+}
+
+export default ResizeProxy

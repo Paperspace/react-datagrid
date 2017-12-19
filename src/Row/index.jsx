@@ -9,30 +9,30 @@ var CellFactory = React.createFactory(Cell)
 var ReactMenu = require('react-menus')
 var ReactMenuFactory = React.createFactory(ReactMenu)
 
-module.exports = React.createClass({
+class Row extends React.Component {
 
-  displayName: 'ReactDataGrid.Row',
+  displayName: 'ReactDataGrid.Row'
 
   propTypes: {
     data   : React.PropTypes.object,
     columns: React.PropTypes.array,
     index  : React.PropTypes.number
-  },
+  }
 
-  getDefaultProps: function(){
+  getDefaultProps (){
 
     return {
       defaultStyle: {}
     }
-  },
+  }
 
-  getInitialState: function(){
+  getInitialState (){
     return {
       mouseOver: false
     }
-  },
+  }
 
-  render: function() {
+  render () {
     var props = this.prepareProps(this.props)
     var cells = props.children || props.columns
             .map(this.renderCell.bind(this, this.props))
@@ -43,9 +43,9 @@ module.exports = React.createClass({
       onContextMenu={props.onContextMenu}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}>{cells}</div>
-  },
+  }
 
-  prepareProps: function(thisProps){
+  prepareProps (thisProps){
     var props = assign({}, thisProps)
 
     props.className = this.prepareClassName(props, this.state)
@@ -60,9 +60,9 @@ module.exports = React.createClass({
     delete props.cellPadding
 
     return props
-  },
+  }
 
-  handleRowClick: function(event){
+  handleRowClick (event){
     if(!this.props.data.selectable) {
       return;
     }
@@ -75,9 +75,9 @@ module.exports = React.createClass({
     if (this.props._onClick){
         this.props._onClick(this.props, event)
     }
-  },
+  }
 
-  handleContextMenu: function(event){
+  handleContextMenu (event){
 
     if (this.props.rowContextMenu){
       this.showMenu(event)
@@ -86,9 +86,9 @@ module.exports = React.createClass({
     if (this.props.onContextMenu){
       this.props.onContextMenu(event)
     }
-  },
+  }
 
-  showMenu: function(event){
+  showMenu (event){
     var factory = this.props.rowContextMenu
     var alignTo = Region.from(event)
 
@@ -123,9 +123,9 @@ module.exports = React.createClass({
     this.props.showMenu(function(){
         return menu
     })
-  },
+  }
 
-  handleMouseLeave: function(event){
+  handleMouseLeave (event){
     this.setState({
       mouseOver: false
     })
@@ -133,9 +133,9 @@ module.exports = React.createClass({
     if (this.props.onMouseLeave){
       this.props.onMouseLeave(event)
     }
-  },
+  }
 
-  handleMouseEnter: function(event){
+  handleMouseEnter (event){
     this.setState({
       mouseOver: true
     })
@@ -143,9 +143,9 @@ module.exports = React.createClass({
     if (this.props.onMouseEnter){
       this.props.onMouseEnter(event)
     }
-  },
+  }
 
-  renderCell: function(props, column, index){
+  renderCell (props, column, index){
 
     var text = props.data[column.name]
     var columns = props.columns
@@ -183,9 +183,9 @@ module.exports = React.createClass({
     }
 
     return result
-  },
+  }
 
-  prepareClassName: function(props, state){
+  prepareClassName (props, state){
       var className = props.className || ''
 
       className += ' z-row '
@@ -209,9 +209,9 @@ module.exports = React.createClass({
       }
 
       return className
-  },
+  }
 
-  prepareStyle: function(props){
+  prepareStyle (props){
 
     var style = assign({}, props.defaultStyle, props.style)
 
@@ -220,4 +220,6 @@ module.exports = React.createClass({
 
     return style
   }
-})
+}
+
+export default Wrapper

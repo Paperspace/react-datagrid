@@ -1,6 +1,7 @@
 'use strict';
 
 var React  = require('react')
+var PropTypes = require('prop-types')
 var assign = require('object-assign')
 var normalize = require('react-style-normalizer')
 
@@ -19,32 +20,11 @@ function copyProps(target, source, list){
 
 }
 
-var PropTypes = React.PropTypes
+class Cell extends React.Component {
 
-var Cell = React.createClass({
+    displayName: 'ReactDataGrid.Cell'
 
-    displayName: 'ReactDataGrid.Cell',
-
-    propTypes: {
-        className     : PropTypes.string,
-        firstClassName: PropTypes.string,
-        lastClassName : PropTypes.string,
-
-        contentPadding: PropTypes.oneOfType([
-            PropTypes.number,
-            PropTypes.string
-        ]),
-
-        column : PropTypes.object,
-        columns: PropTypes.array,
-        index  : PropTypes.number,
-
-        style      : PropTypes.object,
-        text       : PropTypes.any,
-        rowIndex   : PropTypes.number
-    },
-
-    getDefaultProps: function(){
+    getDefaultProps (){
         return {
             text: '',
 
@@ -53,9 +33,9 @@ var Cell = React.createClass({
 
             defaultStyle: {}
         }
-    },
+    }
 
-    prepareClassName: function(props) {
+    prepareClassName (props) {
         var index     = props.index
         var columns   = props.columns
         var column    = props.column
@@ -86,9 +66,9 @@ var Cell = React.createClass({
         }
 
         return className
-    },
+    }
 
-    prepareStyle: function(props) {
+    prepareStyle (props) {
         var column    = props.column
         var sizeStyle = column && column.sizeStyle
 
@@ -102,9 +82,9 @@ var Cell = React.createClass({
         var style = assign({}, props.defaultStyle, sizeStyle, alignStyle, props.style)
 
         return normalize(style)
-    },
+    }
 
-    prepareProps: function(thisProps){
+    prepareProps (thisProps){
 
         var props = assign({}, thisProps)
 
@@ -116,9 +96,9 @@ var Cell = React.createClass({
         props.style     = this.prepareStyle(props)
 
         return props
-    },
+    }
 
-    render: function(){
+    render (){
         var props = this.p = this.prepareProps(this.props)
 
         var column    = props.column
@@ -159,8 +139,27 @@ var Cell = React.createClass({
             </div>
         )
     }
-})
+}
+
+Cell.propTypes = {
+    className     : PropTypes.string,
+    firstClassName: PropTypes.string,
+    lastClassName : PropTypes.string,
+
+    contentPadding: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string
+    ]),
+
+    column : PropTypes.object,
+    columns: PropTypes.array,
+    index  : PropTypes.number,
+
+    style      : PropTypes.object,
+    text       : PropTypes.any,
+    rowIndex   : PropTypes.number
+}
 
 Cell.className = 'z-cell'
 
-module.exports = Cell
+export default Cell

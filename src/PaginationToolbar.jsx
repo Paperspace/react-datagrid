@@ -112,11 +112,11 @@ var defaultStyles = {
 	// gotoNext: { marginLeft: 10}
 }
 
-module.exports = React.createClass({
+class PaginationToolbar extends React.Component {
 
-	displayName: 'PaginationToolbar',
+	displayName: 'PaginationToolbar'
 
-	getDefaultProps: function(){
+	getDefaultProps (){
 		return {
 			iconSize: 20,
 			showRefreshIcon: true,
@@ -155,15 +155,15 @@ module.exports = React.createClass({
 				}
 			}
 		}
-	},
+	}
 
-	getInitialState: function(){
+	getInitialState (){
 		return {
 			mouseOver: {}
 		}
-	},
+	}
 
-	prepareProps: function(thisProps) {
+	prepareProps (thisProps) {
 		var props = assign({}, thisProps)
 
 		props.className = this.prepareClassName(props)
@@ -173,18 +173,18 @@ module.exports = React.createClass({
 		delete props.defaultStyle
 
 		return props
-	},
+	}
 
-	prepareClassName: function(props) {
+	prepareClassName (props) {
 		var className = props.className || ''
 
 		className += ' react-datagrid-pagination-toolbar'
 
 		return className
 
-	},
+	}
 
-	preparePageSizes: function(props) {
+	preparePageSizes (props) {
 		var sizes = [].concat(props.pageSizes)
 
 		if (sizes.indexOf(props.pageSize) == -1){
@@ -192,9 +192,9 @@ module.exports = React.createClass({
 		}
 
 		return sizes.sort(sortAsc)
-	},
+	}
 
-	prepareIconProps: function(props) {
+	prepareIconProps (props) {
 		var iconProps = assign({}, props.defaultIconProps)
 		var defaultIconStyle = iconProps.style
 		var defaultIconOverStyle = iconProps.overStyle
@@ -220,9 +220,9 @@ module.exports = React.createClass({
 		iconProps.disabledStyle = assign({}, defaultIconDisabledStyle, iconProps.disabledStyle)
 
 		return iconProps
-	},
+	}
 
-	prepareStyle: function(props) {
+	prepareStyle (props) {
 		var borderStyle = {}
 		var borderName = 'borderTop'
 
@@ -235,23 +235,23 @@ module.exports = React.createClass({
 		}
 
 		return assign({}, props.defaultStyle, borderStyle, props.style)
-	},
+	}
 
-	handleInputChange: function(event) {
+	handleInputChange (event) {
 		var value = event.target.value * 1
 
 		if (!isNaN(value) && value >= this.props.minPage && value <= this.props.maxPage && value != this.props.page){
 			this.gotoPage(value)
 		}
-	},
+	}
 
-	handleInputBlur: function() {
+	handleInputBlur () {
 		this.setState({
 			inputFocused: false
 		})
-	},
+	}
 
-	handleInputFocus: function() {
+	handleInputFocus () {
 
 		var page = this.props.page
 		this.setState({
@@ -261,13 +261,13 @@ module.exports = React.createClass({
 			var domNode = findDOMNode(this.refs.input)
 			domNode.value = page
 		}.bind(this))
-	},
+	}
 
-	onPageSizeChange: function(event) {
+	onPageSizeChange (event) {
 		this.props.onPageSizeChange(event.target.value * 1)
-	},
+	}
 
-	renderInput: function(props) {
+	renderInput (props) {
 		var otherProps = {}
 
 		if (this.state.inputFocused){
@@ -304,9 +304,9 @@ module.exports = React.createClass({
 		}
 
 		return result
-	},
+	}
 
-	renderSelect: function(props) {
+	renderSelect (props) {
 
 		var options = props.pageSizes.map(function(value){
 			return <option value={value}>{value}</option>
@@ -329,9 +329,9 @@ module.exports = React.createClass({
 		}
 
 		return result
-	},
+	}
 
-	renderDisplaying: function(props) {
+	renderDisplaying (props) {
 		var start       = ((props.pageSize * (props.page - 1) || 0) + 1)
 		var end         = Math.min(props.pageSize * props.page, props.dataSourceCount) || 1
 		var refreshIcon = props.showRefreshIcon? this.icon('refresh', props): null
@@ -360,17 +360,17 @@ module.exports = React.createClass({
 			<span style={textStyle}>Displaying {start} - {end} of {props.dataSourceCount || 1}.</span>
 			{sep}{refreshIcon}
 		</div>
-	},
+	}
 
-	renderPageSize: function(props) {
+	renderPageSize (props) {
 		if (props.showPageSize){
 			return <div>
 				Page size {this.renderSelect(props)}
 			</div>
 		}
-	},
+	}
 
-	render: function(){
+	render (){
 
 		var props = this.prepareProps(this.props)
 
@@ -409,9 +409,9 @@ module.exports = React.createClass({
 				{displaying}
 			</Region>
 		</Toolbar>
-	},
+	}
 
-	icon: function(iconName, props) {
+	icon (iconName, props) {
 		var icon = props[iconName + 'Icon']
 
 		if (!icon || typeof icon != 'function'){
@@ -460,29 +460,31 @@ module.exports = React.createClass({
 		}
 
 		return icon
-	},
+	}
 
-	onIconMouseEnter: function(props, iconProps) {
+	onIconMouseEnter (props, iconProps) {
 		var mouseOver = this.state.mouseOver
 
 		mouseOver[iconProps.name] = true
 
 		this.setState({})
-	},
+	}
 
-	onIconMouseLeave: function(props, iconProps) {
+	onIconMouseLeave (props, iconProps) {
 		var mouseOver = this.state.mouseOver
 
 		mouseOver[iconProps.name] = false
 
 		this.setState({})
-	},
+	}
 
-	reload: function() {
+	reload () {
 		;(this.props.reload || emptyFn)()
-	},
+	}
 
-	gotoPage: function(page) {
+	gotoPage (page) {
 		this.props.onPageChange(page)
 	}
-})
+}
+
+export default PaginationToolbar
